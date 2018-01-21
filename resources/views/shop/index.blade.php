@@ -61,11 +61,20 @@
 <h5>
 <form name="form" >
 	<label>
-		<input type="checkbox" name="test" value="TEST1" onClick="DisChecked();" />chunithm
-	</label>
+        <input type="checkbox" name="test" value="TEST1" onClick="DisChecked();" />chunithm
+    </label>
 	<label>
 		<input type="checkbox" name="test" value="TEST2" onClick="DisChecked();" />maimai
 	</label>
+    <label>
+        <input type="checkbox" name="test" value="TEST3" onClick="DisChecked();" />voltex
+    </label>
+    <label>
+        <input type="checkbox" name="test" value="TEST4" onClick="DisChecked();" />jubeat
+    </label>
+    <label>
+        <input type="checkbox" name="test" value="TEST5" onClick="DisChecked();" />coaster
+    </label>
 	<label>
 	<input type="checkbox" name="all" onClick="AllChecked();" />全て選択/解除
 	</label>
@@ -161,19 +170,30 @@ foreach($prefs as $pref) {
 ?>
 </select>
 
-@foreach($shops as $shop)
-<div>
-    <div>{{{ $shop->id }}}</div>
-    <div>{{{ $shop->name }}}</div>
-    <div>{{{ $shop->station }}}</div>
-    <div>{{{ $shop->chunithm }}}</div>
-    <div>{{{ $shop->maimai }}}</div>
-    <div>{{{ $shop->voltex }}}</div>
-    <div>{{{ $shop->jubeat }}}</div>
-    <div>{{{ $shop->coaster }}}</div>
-</div>
-<hr>
-@endforeach
+    {!! Form::open(['method' => 'GET']) !!}
+    {!! Form::checkbox('s', null,false) !!}
+
+    {!! Form::submit('検索') !!}
+    {!! Form::close() !!}
+
+    @foreach($data as $shop)
+        <div>
+            <div>id:{{{ $shop->id }}}</div>
+            <div>name:{{{ $shop->name }}}</div>
+            <div>station:{{{ $shop->station }}}</div>
+            <div>chunithm:{{{ $shop->chunithm }}}</div>
+            <div>maimai:{{{ $shop->maimai }}}</div>
+            <div>voltex:{{{ $shop->voltex }}}</div>
+            <div>jubeat:{{{ $shop->jubeat }}}</div>
+            <div>coaster:{{{ $shop->coaster }}}</div>
+        </div>
+        <hr>
+    @endforeach
+
+
+
+
+
 
 </h5>
 <h3>検索結果</h3>
