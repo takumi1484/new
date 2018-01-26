@@ -59,136 +59,19 @@
 
 <h3>条件指定</h3>
 <h5>
-<form name="form" >
-	<label>
-        <input type="checkbox" name="test" value="TEST1" onClick="DisChecked();" />chunithm
-    </label>
-	<label>
-		<input type="checkbox" name="test" value="TEST2" onClick="DisChecked();" />maimai
-	</label>
-    <label>
-        <input type="checkbox" name="test" value="TEST3" onClick="DisChecked();" />voltex
-    </label>
-    <label>
-        <input type="checkbox" name="test" value="TEST4" onClick="DisChecked();" />jubeat
-    </label>
-    <label>
-        <input type="checkbox" name="test" value="TEST5" onClick="DisChecked();" />coaster
-    </label>
-	<label>
-	<input type="checkbox" name="all" onClick="AllChecked();" />全て選択/解除
-	</label>
-</form>
 
-<script language="JavaScript" type="text/javascript">
-<!--
-// 「全て選択」チェックで全てにチェック付く
-function AllChecked(){
-	var all = document.form.all.checked;
-	for (var i=0; i<document.form.test.length; i++){
-		document.form.test[i].checked = all;
-		}
-	}
-// 一つでもチェックを外すと「全て選択」のチェック外れる
-function DisChecked(){
-	var checks = document.form.test;
-	var checksCount = 0;
-	for (var i=0; i<checks.length; i++){
-		if(checks[i].checked == false){
-			document.form.all.checked = false;
-		}else{
-			checksCount += 1;
-			if(checksCount == checks.length){
-				document.form.all.checked = true;
-					}
-				}
-			}
-		}
-// -->
-</script>
-</select>
-
-<script language="JavaScript" type="text/javascript">
-<!--
-// 「全て選択」チェックで全てにチェック付く
-function AllChecked(){
-	var all = document.form.all.checked;
-	for (var i=0; i<document.form.test.length; i++){
-		document.form.test[i].checked = all;
-		}
-	}
-// 一つでもチェックを外すと「全て選択」のチェック外れる
-function DisChecked(){
-	var checks = document.form.test;
-	var checksCount = 0;
-	for (var i=0; i<checks.length; i++){
-		if(checks[i].checked == false){
-			document.form.all.checked = false;
-		}else{
-			checksCount += 1;
-			if(checksCount == checks.length){
-				document.form.all.checked = true;
-					}
-				}
-			}
-		}
-// -->
-</script></select>
-
-<script language="JavaScript" type="text/javascript">
-<!--
-// 「全て選択」チェックで全てにチェック付く
-function AllChecked(){
-	var all = document.form.all.checked;
-	for (var i=0; i<document.form.test.length; i++){
-		document.form.test[i].checked = all;
-		}
-	}
-// 一つでもチェックを外すと「全て選択」のチェック外れる
-function DisChecked(){
-	var checks = document.form.test;
-	var checksCount = 0;
-	for (var i=0; i<checks.length; i++){
-		if(checks[i].checked == false){
-			document.form.all.checked = false;
-		}else{
-			checksCount += 1;
-			if(checksCount == checks.length){
-				document.form.all.checked = true;
-					}
-				}
-			}
-		}
-// -->
-</script>
-<select name="pref" id="pref">
-<?php
-$prefs = array('都道府県を選択','茨城県','千葉県','東京都');
-foreach($prefs as $pref) {
-	print('<option value="' . $pref . '">' . $pref . '</option>');
-}
-?>
-</select>
 
     {!! Form::open(['method' => 'GET']) !!}
-    {!! Form::checkbox('s', null,false) !!}
+    chunithm{!! Form::checkbox('chunithm', null,false) !!}
+    maimai{!! Form::checkbox('maimai', null,false) !!}
+    voltex{!! Form::checkbox('voltex', null,false) !!}
+    jubeat{!! Form::checkbox('jubeat', null,false) !!}
+    coaster{!! Form::checkbox('coaster', null,false) !!}
 
     {!! Form::submit('検索') !!}
     {!! Form::close() !!}
 
-    @foreach($data as $shop)
-        <div>
-            <div>id:{{{ $shop->id }}}</div>
-            <div>name:{{{ $shop->name }}}</div>
-            <div>station:{{{ $shop->station }}}</div>
-            <div>chunithm:{{{ $shop->chunithm }}}</div>
-            <div>maimai:{{{ $shop->maimai }}}</div>
-            <div>voltex:{{{ $shop->voltex }}}</div>
-            <div>jubeat:{{{ $shop->jubeat }}}</div>
-            <div>coaster:{{{ $shop->coaster }}}</div>
-        </div>
-        <hr>
-    @endforeach
+
 
 
 
@@ -197,7 +80,22 @@ foreach($prefs as $pref) {
 
 </h5>
 <h3>検索結果</h3>
-<p>aaaaaaa</p>
+<h5>    @foreach($data as $shop)
+        <div>
+            <div>id:{{{ $shop->id }}}</div>
+            <a href=show?id={{$shop->id}}&name={{$shop->name}}><div>name:{{{ $shop->name }}}</div></a>
+            <div>station:{{{ $shop->station }}}</div>
+            <div>chunithm:{{{ $shop->chunithm }}}</div>
+            <div>maimai:{{{ $shop->maimai }}}</div>
+            <div>voltex:{{{ $shop->voltex }}}</div>
+            <div>jubeat:{{{ $shop->jubeat }}}</div>
+            <div>coaster:{{{ $shop->coaster }}}</div>
+
+
+        </div>
+        <hr>
+        @endforeach
+</h5>
 
 </section>
 

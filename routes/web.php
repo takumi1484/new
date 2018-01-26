@@ -13,5 +13,8 @@
  
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/shop', 'ShopsController@getIndex');
+Route::get('/shop', 'ShopsController@getIndex1');
 
+Route::get('/show', 'ShopsController@getIndex2');
+
+Route::get('/show', 'CommentsController@getIndex');
