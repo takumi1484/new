@@ -1,4 +1,4 @@
-<?php
+<?php/*
 
 namespace App\Http\Controllers;
 
@@ -19,4 +19,4 @@ class CommentsController extends Controller
         $comments = $this->comment->all();
         return view('show.index', compact('comments'));
     }
-}
+}*/

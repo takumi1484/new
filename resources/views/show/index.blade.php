@@ -93,34 +93,24 @@
                 <h3>コメント</h3>
                     <h5>
 
-                    @foreach($comments as $commnet)
-                            <hr>
-                            <div>
-                                <div>{{{ $commnet->id }}}</div>
-                                <div>{{{ $commnet->name }}}</div>
-                                <div>{{{ $commnet->shop }}}</div>
-                                <div>{{{ $commnet->comment }}}</div>
-                                <div>{{{ $commnet->created_at }}}</div>
-                            </div>
-                        @endforeach
-                        <hr>
-                        <?php
-                        $say = DB::table('comments')->where('shop',"{$_GET['name']}")->first();
+                        <form method="post" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <p>題名<br><input type="text" name="title" size="50"></p>
+                            <p>本文<br><textarea name="body" cols="50" rows="8"></textarea></p>
 
-                        foreach ((array)$say->id as $s){
-                        $say = DB::table('comments')->where('shop',"{$_GET['name']}")->first();
-                        echo $say->id;
-                        echo $say->shop;
-                        echo $say->name;
-                        echo $say->created_at;
-                        echo $say->updated_at;
-                        echo $say->comment,'<br />';
-                        }
-                        ?>
+                            <button name="shop" value=<?php echo "{$_GET['name']}" ; ?>>投稿</button>
+                        </form>
 
-                        <small>投稿日：{{ date("Y年 m月 d日",strtotime($say->created_at)) }}</small>
+<?php
+            $say = $posts->where('shop',"{$_GET['name']}");
+            foreach ($say as $s){
+            echo $s->title;
+            echo $s->created_at;
+            echo $s->updated_at;
+            echo $s->body,'<br />';
+            }
 
-
+            ?>
 
 
 
