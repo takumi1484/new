@@ -77,6 +77,7 @@
                         //echo $shop;
                         //echo $p;
                         //<div>{{{$shop-> where('id', '=' ,"{$_GET['id']}")->get()}}}</div>
+                        //以上コメントアウト欄は没
                         //?>
                         <?php
                         $user = DB::table('shops')->where('id', "{$_GET['id']}")->first();
@@ -95,26 +96,22 @@
 
                         <form method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <p>題名<br><input type="text" name="title" size="50"></p>
-                            <p>本文<br><textarea name="body" cols="50" rows="8"></textarea></p>
+                            <p>名前<br><input type="text" name="title" size="50" value="Nameless gamer"></p>
+                            <p>本文<br><textarea name="body" cols="50" rows="3"></textarea></p>
 
                             <button name="shop" value=<?php echo "{$_GET['name']}" ; ?>>投稿</button>
                         </form>
+                        </br>
 
-<?php
-            $say = $posts->where('shop',"{$_GET['name']}");
-            foreach ($say as $s){
-            echo $s->title;
-            echo $s->created_at;
-            echo $s->updated_at;
-            echo $s->body,'<br />';
-            }
 
+                        <?php
+                        $say = $posts->where('shop',"{$_GET['name']}");
+                        foreach ($say as $s){
+                            echo '<hr />',$s->title;
+                            echo '　投稿日時',$s->created_at,'<br />';
+                            echo $s->body;
+                        }
             ?>
-
-
-
-        </div>
 
                     </h5>
 

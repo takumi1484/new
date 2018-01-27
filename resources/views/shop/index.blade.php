@@ -68,8 +68,27 @@
     jubeat{!! Form::checkbox('jubeat', null,false) !!}
     coaster{!! Form::checkbox('coaster', null,false) !!}
 
+
+    <select name="pref" id="pref">
+        <?php
+        $prefs = array('都道府県を選択','茨城県','千葉県','東京都');
+        foreach($prefs as $pref) {
+            print('<option value="' . $pref . '">' . $pref . '</option>');
+        }
+        ?>
+    </select>
+    <select name="好きな果物">
+        <option>りんご</option>
+        <option>みかん</option>
+        <option>バナナ</option>
+        <option>パイナップル</option>
+    </select>
+
+
     {!! Form::submit('検索') !!}
     {!! Form::close() !!}
+
+
 
 
 
