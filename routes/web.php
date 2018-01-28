@@ -38,10 +38,10 @@ Route::post('/show', function () {
     $post->body = request('body');
     $post->shop = request('shop');
     if($post->title == ""){
-        return redirect('/shop');
+        return back()->withInput();
     }
     if($post->body == ""){
-        return redirect('/shop');
+        return back()->withInput();
     }
     $post->save();
 
@@ -50,7 +50,7 @@ Route::post('/show', function () {
         $file->store('public');
         $post->images()->create(['filename' => $file->hashName()]);
     }
-    return redirect('/shop');
+    return back()->withInput();
 });
 
 // Comment

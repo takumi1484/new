@@ -17,6 +17,9 @@ class CreateShopsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('station');
+            $table->float('far');
+            $table->string('prefecture');
+            $table->string('city');
             $table->integer('chunithm');
             $table->integer('maimai');
             $table->integer('voltex');
