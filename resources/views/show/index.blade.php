@@ -19,8 +19,8 @@
         <div class="inner">
             <h1 id="logo"><a href="Home"><img src="images/logo.png" alt="Sample"></a></h1>
             <div id="contact">
-                <p class="tel">ログイン関係</p>
-                <p class="form"><a href="ログインurl">ログインボタン</a></p>
+                <p class="tel">ログインはこちら</p>
+                <p class="form"><a href="ログインurl">ログイン</a></p>
             </div>
         </div>
     </header>
@@ -28,19 +28,19 @@
     <!--PC用（801px以上端末）メニュー-->
     <nav id="menubar">
         <ul>
-            <li><a href="../Home">ホーム<span>Home</span></a></li>
-            <li><a href="../Instructions">各筐体説明<span>Instructions</span></a></li>
-            <li><a href="../News">最新情報<span>News</span></a></li>
-            <li><a href="../About">サイト概要<span>About</span></a></li>
+            <li><a href="shop">ホーム<span>Home</span></a></li>
+            <li><a href="">各筐体説明<span>Instructions</span></a></li>
+            <li><a href="">楽曲検索<span>Songs</span></a></li>
+            <li><a href="">English<span>えいご</span></a></li>
         </ul>
     </nav>
     <!--小さな端末用（800px以下端末）メニュー-->
     <nav id="menubar-s">
         <ul>
-            <li><a href="../Home">ホーム<span>Home</span></a></li>
-            <li><a href="../Instructions">各筐体説明<span>Instructions</span></a></li>
-            <li><a href="../News">最新情報<span>News</span></a></li>
-            <li><a href="../About">サイト概要<span>About</span></a></li>
+            <li><a href="shop">ホーム<span>Home</span></a></li>
+            <li><a href="">各筐体説明<span>Instructions</span></a></li>
+            <li><a href="">楽曲検索<span>Songs</span></a></li>
+            <li><a href="">English<span>えいご</span></a></li>
         </ul>
     </nav>
 
@@ -81,28 +81,37 @@
                         //?>
                         <?php
                         $user = DB::table('shops')->where('id', "{$_GET['id']}")->first();
-                        echo $user->id,'<br />';
-                        echo $user->station,'<br />';
-                        echo $user->chunithm,'<br />';
-                        echo $user->maimai,'<br />';
-                        echo $user->voltex,'<br />';
-                        echo $user->jubeat,'<br />';
-                        echo $user->coaster,'<br />';
+                        echo '最寄り駅:';
+                        echo $user->station,'<br />chunithm:';
+                        echo $user->chunithm,'台<br />maimai:';
+                        echo $user->maimai,'台<br />voltex:';
+                        echo $user->voltex,'台<br />jubeat:';
+                        echo $user->jubeat,'台<br />coaster:';
+                        echo $user->coaster,'台<br />';
                         ?>
 
                   </h5>
                 <h3>コメント</h3>
                     <h5>
+                        <?php
+                        if (Auth::check()){$user = Auth::user();}else{$user->name = 'Nameless Gamer';}
+                         ?>
 
                         <form method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                            <p>名前<br><input type="text" name="title" size="50" value="Nameless gamer"></p>
+                            <p>名前<br><input type="text" name="title" size="50" value="<?php echo $user->name;?>"></p>
                             <p>本文<br><textarea name="body" cols="50" rows="3"></textarea></p>
-
-                            <button name="shop" value=<?php echo "{$_GET['name']}" ; ?>>投稿</button>
+                            <?php
+                                if (Auth::check()){
+                                echo '<button name="shop" value=';
+                                echo "{$_GET['name']}" ;
+                                echo '>投稿</button>';
+                                  }else{
+                                echo 'ログインするとコメントが打てます';
+                                 }
+                            ?>
                         </form>
                         </br>
-
 
                         <?php
                         $say = $posts->where('shop',"{$_GET['name']}");
@@ -138,15 +147,17 @@
             </nav>
 
             <section class="box1">
-                <h2>プロフ予定</h2>
-                <p>内容</p>
-                <p class="form"><a href="ゆーあーるえる">リンクボタン？</a></p>
-            </section>
+<?php
+                if (Auth::check()){
+                    echo '<h2>ようこそ</h2>';
+                    echo '<a href="login">ログアウト</a>';
+                }else{
+                    echo '<h2>ログイン</h2>';
+                    echo '<a href="login">ログインする</a></br>';
+                    echo '<a href="register">新規登録</a>';
+                }
+                ?>
 
-            <section class="box1">
-                <h2>更新履歴</h2>
-                <p><iframe src="../log.html">
-                        インラインフレーム対応ブラウザでご覧いただけます。</iframe></p>
             </section>
             <!--/box1-->
 

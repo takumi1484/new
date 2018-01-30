@@ -19,6 +19,7 @@ class ShopsController extends Controller
         $cb3 = Request::get('voltex');
         $cb4 = Request::get('jubeat');
         $cb5 = Request::get('coaster');
+        $cb6 = Request::get('list');
 
         $shops = Shop::query();
         // 検索するテキストが入力されている場合のみ
@@ -37,9 +38,12 @@ class ShopsController extends Controller
         if(!empty($cb5)) {
             $shops->where('coaster','!=','0');
         }
+        if($cb6 != 'all') {
+            $shops->where('prefecture', 'like', "$cb6");
+        }
         $data = $shops->get();
 
-        return view('shop.index', compact('shops','name','chunithm','maimai','voltex','jubeat','coaster','data'));
+        return view('shop.index', compact('shops','name','chunithm','maimai','voltex','jubeat','prefecture','coaster','data'));
 
     }
     public function getIndex2()

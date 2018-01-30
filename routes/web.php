@@ -66,3 +66,7 @@ Route::post('/comments', function () {
     }
     return redirect('/shop');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

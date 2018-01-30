@@ -17,30 +17,27 @@
 
 <header>
 <div class="inner">
-<h1 id="logo"><a href="Home"><img src="images/logo.png" alt="Sample"></a></h1>
-<div id="contact">
-<p class="tel">ログイン関係</p>
-<p class="form"><a href="ログインurl">ログインボタン</a></p>
-</div>
+<h1 id="logo"><a href="shop"><img src="images/logo.png" alt="Play OTOGE!!"></a></h1>
+
 </div>
 </header>
 
 <!--PC用（801px以上端末）メニュー-->
 <nav id="menubar">
 <ul>
-<li><a href="../Home">ホーム<span>Home</span></a></li>
-<li><a href="../Instructions">各筐体説明<span>Instructions</span></a></li>
-<li><a href="../News">最新情報<span>News</span></a></li>
-<li><a href="../About">サイト概要<span>About</span></a></li>
+    <li><a href="shop">ホーム<span>Home</span></a></li>
+    <li><a href="">各筐体説明<span>Instructions</span></a></li>
+    <li><a href="">楽曲検索<span>Songs</span></a></li>
+    <li><a href="">English<span>えいご</span></a></li>
 </ul>
 </nav>
 <!--小さな端末用（800px以下端末）メニュー-->
 <nav id="menubar-s">
 <ul>
-<li><a href="../Home">ホーム<span>Home</span></a></li>
-<li><a href="../Instructions">各筐体説明<span>Instructions</span></a></li>
-<li><a href="../News">最新情報<span>News</span></a></li>
-<li><a href="../About">サイト概要<span>About</span></a></li>
+    <li><a href="shop">ホーム<span>Home</span></a></li>
+    <li><a href="">各筐体説明<span>Instructions</span></a></li>
+    <li><a href="">楽曲検索<span>Songs</span></a></li>
+    <li><a href="">English<span>えいご</span></a></li>
 </ul>
 </nav>
 
@@ -68,33 +65,16 @@
     jubeat{!! Form::checkbox('jubeat', null,false) !!}
     coaster{!! Form::checkbox('coaster', null,false) !!}
 
-
-    <select name="pref" id="pref">
-        <?php
-        $prefs = array('都道府県を選択','茨城県','千葉県','東京都');
-        foreach($prefs as $pref) {
-            print('<option value="' . $pref . '">' . $pref . '</option>');
-        }
-        ?>
-    </select>
-    <select name="好きな果物">
-        <option>りんご</option>
-        <option>みかん</option>
-        <option>バナナ</option>
-        <option>パイナップル</option>
-    </select>
+    <div class="control-group">
+        {{ Form::label('native','場所',array('class'=>'control-label')) }}
+        <div class="controls">
+            {{ Form::select('list',array('all'=>'-未選択-','tokyo'=>'東京','chiba'=>'千葉','ibaraki'=>'茨城'),'1') }}
+        </div>
+    </div>
 
 
     {!! Form::submit('検索') !!}
     {!! Form::close() !!}
-
-
-
-
-
-
-
-
 
 
 </h5>
@@ -104,13 +84,6 @@
             <div>id:{{{ $shop->id }}}</div>
             <a href=show?id={{$shop->id}}&name={{$shop->name}}><div>name:{{{ $shop->name }}}</div></a>
             <div>station:{{{ $shop->station }}}</div>
-            <div>chunithm:{{{ $shop->chunithm }}}</div>
-            <div>maimai:{{{ $shop->maimai }}}</div>
-            <div>voltex:{{{ $shop->voltex }}}</div>
-            <div>jubeat:{{{ $shop->jubeat }}}</div>
-            <div>coaster:{{{ $shop->coaster }}}</div>
-
-
         </div>
         <hr>
         @endforeach
@@ -139,9 +112,18 @@ posNum = 7;
 </nav>
 
 <section class="box1">
-<h2>プロフ予定</h2>
-<p>内容</p>
-<p class="form"><a href="ゆーあーるえる">リンクボタン？</a></p>
+
+    <?php
+    if (Auth::check()){
+        echo '<h2>ようこそ</h2>';
+        echo '<a href="login">ログアウト</a>';
+    }else{
+        echo '<h2>ログイン</h2>';
+        echo '<a href="login">ログインする</a></br>';
+        echo '<a href="register">新規登録</a>';
+    }
+    ?>
+
 </section>
 
 <section class="box1">
