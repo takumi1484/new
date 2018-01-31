@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>project0</title>
+    <title>Play OTOGE!!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="サイト説明">
     <meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
