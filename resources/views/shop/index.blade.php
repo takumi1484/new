@@ -80,8 +80,8 @@
 <h3>検索結果</h3>
 <h5>    @foreach($data as $shop)
         <div>
-            <a href=show?id={{$shop->id}}&name={{$shop->name}}><div>name:{{{ $shop->name }}}</div></a>
-            <div>station:{{{ $shop->station }}}</div>
+            <a href=show?id={{$shop->id}}&name={{$shop->name}}><div>店名:{{{ $shop->name }}}</div></a>
+            <div>最寄り駅:{{{ $shop->station }}}</div>
         </div>
         <hr>
         @endforeach
