@@ -116,6 +116,8 @@ posNum = 7;
     <?php
     if (Auth::check()){
         echo '<h2>ようこそ</h2>';
+        $user = Auth::user();
+        echo $user->name,"さん</br>";
         echo '<a href="login">ログアウト</a>';
     }else{
         echo '<h2>ログイン</h2>';
