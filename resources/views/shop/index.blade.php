@@ -18,7 +18,6 @@
 <header>
 <div class="inner">
 <h1 id="logo"><a href="shop"><img src="images/logo.png" alt="Play OTOGE!!"></a></h1>
-
 </div>
 </header>
 
@@ -81,7 +80,6 @@
 <h3>検索結果</h3>
 <h5>    @foreach($data as $shop)
         <div>
-            <div>id:{{{ $shop->id }}}</div>
             <a href=show?id={{$shop->id}}&name={{$shop->name}}><div>name:{{{ $shop->name }}}</div></a>
             <div>station:{{{ $shop->station }}}</div>
         </div>

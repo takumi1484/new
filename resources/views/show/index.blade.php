@@ -18,10 +18,6 @@
     <header>
         <div class="inner">
             <h1 id="logo"><a href="Home"><img src="images/logo.png" alt="Sample"></a></h1>
-            <div id="contact">
-                <p class="tel">ログインはこちら</p>
-                <p class="form"><a href="ログインurl">ログイン</a></p>
-            </div>
         </div>
     </header>
 
