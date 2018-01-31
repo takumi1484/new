@@ -71,7 +71,6 @@
         </div>
     </div>
 
-
     {!! Form::submit('検索') !!}
     {!! Form::close() !!}
 

@@ -41,6 +41,7 @@ class ShopsController extends Controller
         if($cb6 != 'all') {
             $shops->where('prefecture', 'like', "$cb6");
         }
+
         $data = $shops->get();
 
         return view('shop.index', compact('shops','name','chunithm','maimai','voltex','jubeat','prefecture','coaster','data'));
